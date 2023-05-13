@@ -11,25 +11,26 @@ body {
   height: 100vh;
 }
 
-.container {
-  width: 50%; /* Adjust the width as needed */
-  height: 50%; /* Adjust the height as needed */
-  max-width: 500px; /* Set a maximum width for the container */
-  max-height: 500px; /* Set a maximum height for the container */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#clock-container {
+  width: 55vw; /* Adjust the width as needed */
+  max-width: 1000px; /* Set a maximum width for the clock */
+  max-height: 1000px; /* Set a maximum height for the clock */
+  position: relative;
+  padding-bottom: 55vw; /* Set the padding-bottom to match the width for a square aspect ratio */
+  background-color: transparent;
 }
 
 #clock {
-  background-color: #333;
-  color: white;
-  font-size: 10vw; /* Responsive font size based on viewport width */
-  text-align: center;
-  padding: 20px;
-  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background-color: #333;
+  color: white;
+  font-size: 13vw; /* Responsive font size based on viewport width */
+  text-align: center;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,8 +46,8 @@ body {
 
 .time-part {
   background: #fff;
-  padding: 10px;
-  margin: 5px;
+  padding: 3vw; /* Responsive padding based on viewport width */
+  margin: 0.3vw; /* Responsive margin based on viewport width */
   border-radius: 5px;
   line-height: 1;
   color: black;
@@ -57,20 +58,19 @@ body {
 
 #day {
   background: #333;
-  padding: 10px;
-  margin: 5px;
+  padding: 0.2vw; /* Responsive padding based on viewport width */
+  margin: 1vw; /* Responsive margin based on viewport width */
   border-radius: 5px;
   color: white;
   font-weight: bold;
   font-style: normal;
   font-family: 'Oswald', sans-serif;
-  font-size: 0.5em;
+  font-size: 6vw; /* Responsive font size based on viewport width */
 }
 
 #text {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 0.2em;
+  margin-top: 0.1vw; /* Responsive margin based on viewport width */
+  font-size: 1.7vw; /* Responsive font size based on viewport width */
   letter-spacing: 0.1em;
   font-weight: bold;
   font-family: 'Arial', sans-serif;
@@ -79,7 +79,7 @@ body {
 </head>
 <body>
 
-<div class="container">
+<div id="clock-container">
   <div id="clock">
     <div id="time">
       <div id="hours" class="time-part"></div>
@@ -112,7 +112,3 @@ setInterval(updateTime, 60000);
 window.addEventListener("resize", function() {
   updateTime();
 });
-</script>
-
-</body>
-</html>
