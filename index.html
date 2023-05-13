@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#clock {
+  font-size: 2em;
+  color: #333;
+}
+</style>
+</head>
+<body>
+
+<h2>Current Time</h2>
+<div id="clock">
+</div>
+
+<script>
+function updateTime() {
+  var now = new Date();
+  var hours = now.getHours();
+  var minutes = now.getMinutes();
+  var seconds = now.getSeconds();
+  
+  // Pad the hours, minutes and seconds with leading zeros, if required
+  hours = (hours < 10 ? "0" : "") + hours;
+  minutes = (minutes < 10 ? "0" : "") + minutes;
+  seconds = (seconds < 10 ? "0" : "") + seconds;
+
+  // Compose the string for display
+  var currentTime = hours + ":" + minutes + ":" + seconds;
+
+  // Update the time display
+  document.getElementById("clock").innerText = currentTime;
+}
+
+// Initialize the clock
+updateTime();
+
+// Update the time every second
+setInterval(updateTime, 1000);
+</script>
+
+</body>
+</html>
