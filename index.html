@@ -11,43 +11,58 @@ body {
 }
 
 #clock {
-  font-family: monospace;
   background-color: #333;
   color: white;
   font-size: 5em;
   text-align: center;
-  padding: 50px;
+  padding: 20px;
   box-sizing: border-box;
   width: 500px;
   height: 500px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+}
+
+#time {
+  letter-spacing: 0.05em;
+  font-family: 'Courier New', monospace;
+}
+
+#text {
+  margin-top: 20px;
+  font-size: 0.2em;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
 }
 </style>
 </head>
 <body>
 
-<div id="clock"></div>
+<div id="clock">
+  <div id="time"></div>
+  <div id="text">VO IMAGES</div>
+</div>
 
 <script>
 function updateTime() {
   var now = new Date();
   var hours = now.getHours();
   var minutes = now.getMinutes();
-  var seconds = now.getSeconds();
 
   hours = (hours < 10 ? "0" : "") + hours;
   minutes = (minutes < 10 ? "0" : "") + minutes;
-  seconds = (seconds < 10 ? "0" : "") + seconds;
 
-  var currentTime = hours + ":" + minutes + ":" + seconds;
-  document.getElementById("clock").innerText = currentTime;
+  var currentTime = hours + ":" + minutes;
+
+  document.getElementById("time").innerText = currentTime;
 }
 
 updateTime();
-setInterval(updateTime, 1000);
+setInterval(updateTime, 60000);
 </script>
 
 </body>
