@@ -12,25 +12,24 @@ body {
 }
 
 #clock-container {
-  width: 55vw; /* Adjust the width as needed */
-  max-width: 1000px; /* Set a maximum width for the clock */
-  max-height: 1000px; /* Set a maximum height for the clock */
-  position: relative;
-  padding-bottom: 55vw; /* Set the padding-bottom to match the width for a square aspect ratio */
+  width: 80%;
+  max-width: 500px;
+  height: auto;
   background-color: transparent;
+  display: flex;
+  flex-direction: column; /* Align clock and day vertically */
+  justify-content: center;
+  align-items: center;
 }
 
 #clock {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-color: #333;
   color: white;
-  font-size: 13vw; /* Responsive font size based on viewport width */
+  font-size: 5em;
   text-align: center;
+  padding: 20px;
   box-sizing: border-box;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,8 +45,8 @@ body {
 
 .time-part {
   background: #fff;
-  padding: 3vw; /* Responsive padding based on viewport width */
-  margin: 0.3vw; /* Responsive margin based on viewport width */
+  padding: 10px;
+  margin: 5px;
   border-radius: 5px;
   line-height: 1;
   color: black;
@@ -58,19 +57,18 @@ body {
 
 #day {
   background: #333;
-  padding: 0.2vw; /* Responsive padding based on viewport width */
-  margin: 1vw; /* Responsive margin based on viewport width */
+  padding: 10px;
+  margin: 5px;
   border-radius: 5px;
   color: white;
   font-weight: bold;
   font-style: normal;
   font-family: 'Oswald', sans-serif;
-  font-size: 6vw; /* Responsive font size based on viewport width */
 }
 
 #text {
-  margin-top: 0.1vw; /* Responsive margin based on viewport width */
-  font-size: 1.7vw; /* Responsive font size based on viewport width */
+  margin-top: 20px;
+  font-size: 0.2em;
   letter-spacing: 0.1em;
   font-weight: bold;
   font-family: 'Arial', sans-serif;
@@ -86,7 +84,7 @@ body {
       <div>:</div>
       <div id="minutes" class="time-part"></div>
     </div>
-    <div id="day"></div>
+    <div id="day"></div> <!-- New element for displaying the day -->
     <div id="text">VO IMAGES</div>
   </div>
 </div>
@@ -96,7 +94,7 @@ function updateTime() {
   var now = new Date();
   var hours = now.getHours();
   var minutes = now.getMinutes();
-  var day = now.toLocaleDateString(undefined, { weekday: 'long' });
+  var day = now.toLocaleDateString(undefined, { weekday: 'long' }); // Get the full day name
 
   hours = (hours < 10 ? "0" : "") + hours;
   minutes = (minutes < 10 ? "0" : "") + minutes;
@@ -112,3 +110,7 @@ setInterval(updateTime, 60000);
 window.addEventListener("resize", function() {
   updateTime();
 });
+</script>
+
+</body>
+</html>
