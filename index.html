@@ -3,12 +3,24 @@
 <head>
 <style>
 body {
-  background-color: grey;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #000000; /* Fallback background color */
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #ffffff; /* Light mode background color */
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000000; /* Dark mode background color */
+  }
 }
 
 #clock-container {
@@ -17,7 +29,7 @@ body {
   height: auto;
   background-color: transparent;
   display: flex;
-  flex-direction: column; /* Align clock and day vertically */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -84,7 +96,7 @@ body {
       <div>:</div>
       <div id="minutes" class="time-part"></div>
     </div>
-    <div id="day"></div> <!-- New element for displaying the day -->
+    <div id="day"></div>
     <div id="text">VO IMAGES</div>
   </div>
 </div>
@@ -94,7 +106,7 @@ function updateTime() {
   var now = new Date();
   var hours = now.getHours();
   var minutes = now.getMinutes();
-  var day = now.toLocaleDateString(undefined, { weekday: 'long' }); // Get the full day name
+  var day = now.toLocaleDateString(undefined, { weekday: 'long' });
 
   hours = (hours < 10 ? "0" : "") + hours;
   minutes = (minutes < 10 ? "0" : "") + minutes;
