@@ -12,11 +12,11 @@ body {
 }
 
 #clock-container {
-  width: 80%; /* Adjust the width as needed */
-  max-width: 500px; /* Set a maximum width for the clock */
-  height: auto;
+  width: 40%;
+  height: 500px;
   background-color: transparent;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -29,7 +29,6 @@ body {
   padding: 20px;
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,8 +54,20 @@ body {
   font-family: 'Oswald', sans-serif;
 }
 
+#day {
+  background: #333;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-style: normal;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.5em;
+}
+
 #text {
-  margin-top: 20px;
+  margin-top: 5px; /* Reduce the top margin */
   font-size: 0.2em;
   letter-spacing: 0.1em;
   font-weight: bold;
@@ -73,6 +84,7 @@ body {
       <div>:</div>
       <div id="minutes" class="time-part"></div>
     </div>
+    <div id="day"></div>
     <div id="text">VO IMAGES</div>
   </div>
 </div>
@@ -82,19 +94,21 @@ function updateTime() {
   var now = new Date();
   var hours = now.getHours();
   var minutes = now.getMinutes();
+  var day = now.toLocaleDateString(undefined, { weekday: 'long' });
 
   hours = (hours < 10 ? "0" : "") + hours;
   minutes = (minutes < 10 ? "0" : "") + minutes;
 
   document.getElementById("hours").innerText = hours;
   document.getElementById("minutes").innerText = minutes;
+  document.getElementById("day").innerText = day;
 }
 
 updateTime();
 setInterval(updateTime, 60000);
 
 window.addEventListener("resize", function() {
-  updateTime(); // Update the time when the window is resized
+  updateTime();
 });
 </script>
 
