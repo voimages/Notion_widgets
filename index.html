@@ -3,23 +3,18 @@
 <head>
 <style>
 body {
-  background-color: white; /* Default background color */
+  background-color: grey;
   margin: 0;
   display: flex;
-  justify-content: left;
-  align-items: left;
-  height: -100vh;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: grey; /* Dark mode background color */
-  }
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #clock-container {
-  width: 320px;
-  height: 320px;
+  width: 80%; /* Adjust the width as needed */
+  max-width: 500px; /* Set a maximum width for the clock */
+  height: auto;
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -53,7 +48,7 @@ body {
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
-  line-height: 1.2;
+  line-height: 1;
   color: black;
   font-weight: bold;
   font-style: normal;
@@ -97,6 +92,10 @@ function updateTime() {
 
 updateTime();
 setInterval(updateTime, 60000);
+
+window.addEventListener("resize", function() {
+  updateTime(); // Update the time when the window is resized
+});
 </script>
 
 </body>
