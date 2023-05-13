@@ -2,17 +2,34 @@
 <html>
 <head>
 <style>
+body {
+  background-color: grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 #clock {
-  font-size: 2em;
-  color: #333;
+  font-family: monospace;
+  background-color: #333;
+  color: white;
+  font-size: 5em;
+  text-align: center;
+  padding: 50px;
+  box-sizing: border-box;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 </style>
 </head>
 <body>
 
-<h2>Current Time</h2>
-<div id="clock">
-</div>
+<div id="clock"></div>
 
 <script>
 function updateTime() {
@@ -20,23 +37,16 @@ function updateTime() {
   var hours = now.getHours();
   var minutes = now.getMinutes();
   var seconds = now.getSeconds();
-  
-  // Pad the hours, minutes and seconds with leading zeros, if required
+
   hours = (hours < 10 ? "0" : "") + hours;
   minutes = (minutes < 10 ? "0" : "") + minutes;
   seconds = (seconds < 10 ? "0" : "") + seconds;
 
-  // Compose the string for display
   var currentTime = hours + ":" + minutes + ":" + seconds;
-
-  // Update the time display
   document.getElementById("clock").innerText = currentTime;
 }
 
-// Initialize the clock
 updateTime();
-
-// Update the time every second
 setInterval(updateTime, 1000);
 </script>
 
